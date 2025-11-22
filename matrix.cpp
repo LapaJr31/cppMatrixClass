@@ -1,4 +1,9 @@
 #include <iostream>
+#include <random>
+
+std::random_device rd;
+std::mt19937 gen(rd());
+std::uniform_real_distribution<double> dis(0.1,10.0); 
 
 class Matrix{
     private:
@@ -20,6 +25,17 @@ class Matrix{
             int i = r * cols + c;
             return vals[i];
         }
+
+        // Matrix operator()(std::string flag){
+        //     if(flag == "random"){
+        //         for (int i = 0; i < rows*cols; i++){
+        //             vals[i] = dis(gen);
+        //         }
+        //         return *this;
+        //     } else {
+        //         throw *this;
+        //     }
+        // }
 
         // addition
         Matrix operator+(Matrix& secMatrix){
@@ -74,19 +90,9 @@ int main(){
 
     int dim = 2;
 
-    Matrix m(dim,dim);
+    Matrix m(dim, dim);
     Matrix n(dim,dim);
     Matrix l(3,3);
-
-    m(0,0) = 5.5;
-    m(0,1) = 1.0;
-    m(1,0) = 5.1;
-    m(1,1) = 5.1;
-
-    n(0,0) = 6.1;
-    n(0,1) = 9.4;
-    n(1,0) = 2.0;
-    n(1,1) = 8.7;
 
     Matrix sum = m+n;
     Matrix dif = m-n;
