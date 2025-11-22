@@ -33,6 +33,19 @@ class Matrix{
             }
         return result;
         }
+
+        Matrix operator-(Matrix& secMatrix){
+            Matrix result(rows,cols);
+
+            if ( rows != secMatrix.rows || cols != secMatrix.cols) {
+                std::cout << "Matrices have different dimensions";    
+            } else {
+                for (int i = 0 ; i < rows*cols; i++) {
+                    result.vals[i] = vals[i] - secMatrix.vals[i];
+                }
+            }
+        return result;
+        }
         
 };
 
@@ -56,10 +69,19 @@ int main(){
     n(1,1) = 8.7;
 
     Matrix sum = m+n;
+    Matrix dif = m-n;
 
+    std::cout << "Sum:\n";
     for (int r = 0; r < dim; r++) {
         for (int c = 0; c < dim; c++){
             std::cout << sum(r, c) << "\n";
+        }
+    }
+
+    std::cout << "Dif:\n";
+    for (int r = 0; r < dim; r++) {
+        for (int c = 0; c < dim; c++){
+            std::cout << dif(r, c) << "\n";
         }
     }
     return 0;
