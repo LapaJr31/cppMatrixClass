@@ -14,7 +14,22 @@ class Matrix{
         }
 
         ~Matrix(){
-            delete vals;
+            delete[] vals;
+        }
+
+        double& operator()(int r, int c){
+            int i = r * cols + c;
+            return vals[i];
         }
         
 };
+
+
+int main(){
+
+    Matrix m(4,5);
+    m(1,2) = 5;
+    std::cout << "value: " << m(1,2) << "\n";
+
+    return 0;
+}
