@@ -39,7 +39,7 @@ class Matrix{
 
 int main(){
 
-    int dim = 1;
+    int dim = 2;
 
     Matrix m(dim,dim);
     Matrix n(dim,dim);
@@ -57,8 +57,8 @@ int main(){
 
     Matrix sum = m+n;
 
-    for (int r = 0; r <= dim; r++) {
-        for (int c = 0; c <=dim; c++){
+    for (int r = 0; r < dim; r++) {
+        for (int c = 0; c < dim; c++){
             std::cout << sum(r, c) << "\n";
         }
     }
