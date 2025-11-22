@@ -21,6 +21,7 @@ class Matrix{
             return vals[i];
         }
 
+        // addition
         Matrix operator+(Matrix& secMatrix){
             Matrix result(rows,cols);
 
@@ -34,6 +35,7 @@ class Matrix{
         return result;
         }
 
+        // subtraction
         Matrix operator-(Matrix& secMatrix){
             Matrix result(rows,cols);
 
@@ -43,6 +45,24 @@ class Matrix{
                 for (int i = 0 ; i < rows*cols; i++) {
                     result.vals[i] = vals[i] - secMatrix.vals[i];
                 }
+            }
+        return result;
+        }
+        
+        // scalar multiplication
+        Matrix operator*=(double num){
+            for (int i = 0; i < rows*cols; i++){
+                vals[i] *=  num;
+            }
+            return *this;
+        }
+
+        // in progress matrix on matrix
+         Matrix operator*=(Matrix& secMatrix){
+            Matrix result(rows,cols);
+            std::cout << "Matrices have different dimensions";    
+            for (int i = 0 ; i < rows*cols; i++) {
+                result.vals[i] = vals[i] - secMatrix.vals[i];
             }
         return result;
         }
