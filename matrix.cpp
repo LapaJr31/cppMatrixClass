@@ -69,7 +69,7 @@ class Matrix{
             return *this;
         }
 
-        // in progress matrix on matrix
+        // matrix on matrix
         Matrix operator*(Matrix& secMatrix){
             Matrix result(rows,secMatrix.cols);
 
@@ -87,6 +87,15 @@ class Matrix{
             }
             return result;
         }
+        // transpose in progress
+        Matrix operator()(Matrix&){
+            for(int r = 0; r < rows; r++){
+                for(int c = 0; c < cols; c++){
+                (*this)(r,c) = (*this)(c,r);
+            }
+        }
+        return *this;
+    }
 };
 
 int main(){
@@ -109,6 +118,7 @@ int main(){
     Matrix sum = m+n;
     Matrix dif = m-n;
     Matrix mult = m*n;
+    Matrix trans = m(m);
 
     std::cout << "Sum:\n";
     for (int r = 0; r < dim; r++) {
@@ -130,6 +140,14 @@ int main(){
     for (int r = 0; r < mult("rows"); r++) {
         for (int c = 0; c < mult("cols"); c++){
             std::cout << mult(r, c) << "\n";
+        }
+    }
+    std::cout << "\n";
+
+    std::cout << "Transpose:\n";
+    for (int r = 0; r < trans("rows"); r++) {
+        for (int c = 0; c < trans("cols"); c++){
+            std::cout << trans(r, c) << "\n";
         }
     }
     std::cout << "\n";
